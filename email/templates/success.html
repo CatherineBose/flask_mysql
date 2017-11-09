@@ -1,0 +1,39 @@
+<html>
+        <head>
+          <title>Emails</title>
+        </head>
+        <body>
+       
+        <h1>These are the emails!</h1>
+        
+        <!-- with all the data we can then construct a more structured output -->
+        <table>
+          <tr>
+            <th>Email</th> 
+            <th>id</th>
+            <th>del Route</th>
+            <th> </th> 
+          </tr>
+          {% for email in emails: %}
+          <tr>
+            <td>{{ email['email'] }}</td>
+            <td>{{email['id']}}</td>
+            <td>/delete/{{email['id']}}</td>
+            <td><a href="/delete/{{email['id']}}">delete</a></td>
+          </tr> 
+        {% endfor %}
+        </table>
+          <div class="msg">
+              {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                      {% for message in messages %}
+                          <p>{{message}}</p>
+                      {% endfor %}
+                  {% endif %}
+              {% endwith %}
+          </div>
+        </body>
+</html>
+        
+        
+        
